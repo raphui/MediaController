@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/b_connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        android:onClick="onClickConnect"
+        android:text="@string/connection" />
+
+    <Button
+        android:id="@+id/b_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/b_connect"
+        android:clickable="true"
+        android:onClick="onClickPlay"
+        android:text="@string/play" />
+
+    <Button
+        android:id="@+id/b_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/b_play"
+        android:clickable="true"
+        android:onClick="onClickTime"
+        android:text="@string/time" />
+
+    <TextView
+        android:id="@+id/navTextEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/b_time"
+        android:layout_marginTop="106dp"
+        android:text="Volume" />
+
+    <TextView
+        android:id="@+id/t_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/navTextEdit"
+        android:layout_marginTop="44dp"
+        android:text="@string/status" />
+
+    <SeekBar
+        android:id="@+id/volBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/navTextEdit"
+        android:max="200" />
+
+    <SeekBar
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/navTextEdit"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="46dp"
+        android:max="100" />
+
+    <TextView
+        android:id="@+id/volTextEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/navBar"
+        android:layout_alignParentLeft="true"
+        android:text="Navigation" />
+
+</RelativeLayout>

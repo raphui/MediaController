@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">VLC Controller</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">VLC Controller</string>
+    <string name="connection">Connect / Disconnect</string>
+    <string name="play">Play / Pause</string>
+    <string name="status">Not connected.</string>
+    <string name="time">Time</string>
+
+</resources>
