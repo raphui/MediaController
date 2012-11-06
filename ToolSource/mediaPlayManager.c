@@ -1,14 +1,26 @@
 #include "mediaPlayManager.h"
 
+void setKeys( int mp )
+{
+    if( mp == 1 )
+    {
+        keys = &keysAvailableVLC;
+    }
+    else if( mp == 2 )
+    {
+        keys = &keysAvailableOMX;
+    }
+}
+
 char *getCommand( const char *func )
 {
     int i;
 
     for( i = 0 ; i < NUM_COMMAND_AVAILABLE ; i++ )
     {
-        if( strcmp( func , keysAvailable[i].function ) == 0 )
+        if( strcmp( func , keys[i].function ) == 0 )
         {
-            return keysAvailable[i].command;
+            return keys[i].command;
         }
     }
 
@@ -17,6 +29,8 @@ char *getCommand( const char *func )
 
 int sendCommand( const char *command )
 {
+    int status = PC_SUCCESS;
+
     char *key = getCommand( command );
 
     if( key != NULL )
@@ -35,7 +49,10 @@ int sendCommand( const char *command )
     else
     {
         printf("[-]Command not valid: %s\n" , command );
+
+        status = PC_ERROR;
+
     }
 
-    return PC_SUCCESS;
+    return status;
 }

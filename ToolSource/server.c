@@ -55,12 +55,12 @@ int closeServer( void )
     return PC_SUCCESS;
 }
 
-void receivingThread( void *socket )
+void *receivingThread( void *socket )
 {
     char buff[BUFF_SIZE];
     int ret;
 
-    printf("[!]Receiving thread create !\n");
+    printf("[!]Receiving thread create with pid : %d !\n" , getpid() );
 
     while( 1 )
     {
@@ -86,47 +86,16 @@ void receivingThread( void *socket )
                 sendCommand( buff );
             }
 
-//            if( strcmp( buff , "Play" ) == 0 )
-//            {
-//                printf("[+]Play request.\n");
-
-//                sendCommand(SCRIPT_COMMAND "space");
-//            }
-//            else if( strcmp( buff , "Disconnect" ) == 0 )
-//            {
-//                close( *( int *)socket );
-
-//                printf("[-]Client disconnect.\n");
-
-//                break;
-//            }
-//            else if( strcmp( buff , "Forward" ) == 0 )
-//            {
-//                sendCommand(SCRIPT_COMMAND "Shift+Right");
-//            }
-//            else if( strcmp( buff , "Rewind" ) == 0 )
-//            {
-//                sendCommand(SCRIPT_COMMAND "Shift+Left");
-//            }
-//            else if( strcmp( buff , "VolumeUp" ) == 0 )
-//            {
-//                sendCommand(SCRIPT_COMMAND "Ctrl+Up");
-//            }
-//            else if( strcmp( buff , "VolumeDown" ) == 0 )
-//            {
-//                sendCommand(SCRIPT_COMMAND "Ctrl+Down");
-//            }
-//            else if( strcmp( buff , "Time" ) == 0 )
-//            {
-//                sendCommand(SCRIPT_COMMAND "t");
-//            }
-
-            //memset( buff , 0 , BUFF_SIZE );
         }
 
     }
 
-    printf("[!]Quitting receiving thread !\n");
+    printf("[!]Quitting receiving thread with pid: %d !\n" , getpid() );
 
     pthread_exit( NULL );
+}
+
+void setMediaPlayer( int mp )
+{
+    setKeys( mp );
 }

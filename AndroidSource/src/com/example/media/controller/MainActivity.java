@@ -1,10 +1,12 @@
-package com.example.vlc.controller;
+package com.example.media.controller;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.sax.TextElementListener;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SlidingDrawer;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -14,12 +16,19 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.*;
 
+import com.example.media.controller.R;
+
 public class MainActivity extends Activity {
 	
 	private Socket socket;
 	private OutputStreamWriter out;
 	private int progressBarNav = 0;
 	private int progressBarVol = 0;
+	private String ip;
+	
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 	
 
     @Override
@@ -60,6 +69,7 @@ public class MainActivity extends Activity {
 					if( socket != null )
 					{
 						try {
+						
 							
 							out.write("Forward");
 							out.flush();
@@ -191,7 +201,7 @@ public class MainActivity extends Activity {
     		
     			if( socket == null )
     			{
-    				socket = new Socket("192.168.1.3" , 1337 );
+    				socket = new Socket( ip , 1337 );
     				
     				out = new OutputStreamWriter( socket.getOutputStream() );
     				
@@ -294,6 +304,17 @@ public class MainActivity extends Activity {
 		}
     }
 
+    public void onClickIp( View v )
+    {
+    	EditText te = ( EditText )findViewById( R.id.te_ip );
+    	TextView tv = ( TextView )findViewById( R.id.t_status );
+    	
+    	setIp( te.getText().toString() );
+    	
+    	
+    	tv.setText("Server IP: " + ip );
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);

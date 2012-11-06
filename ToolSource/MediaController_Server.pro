@@ -14,3 +14,6 @@ HEADERS += \
 INCLUDEPATH += "./vlc-2.0.4/include"
 
 LIBS += -lpthread
+
+target.path = /home/pi/Development
+INSTALLS += target

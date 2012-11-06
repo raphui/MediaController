@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.vlc.controller;
+package com.example.media.controller;
 
 public final class R {
     public static final class attr {
@@ -16,12 +16,14 @@ public final class R {
     }
     public static final class id {
         public static final int b_connect=0x7f070000;
+        public static final int b_ip=0x7f070009;
         public static final int b_play=0x7f070001;
         public static final int b_time=0x7f070002;
-        public static final int menu_settings=0x7f070008;
+        public static final int menu_settings=0x7f07000a;
         public static final int navBar=0x7f070006;
         public static final int navTextEdit=0x7f070003;
         public static final int t_status=0x7f070004;
+        public static final int te_ip=0x7f070008;
         public static final int volBar=0x7f070005;
         public static final int volTextEdit=0x7f070007;
     }

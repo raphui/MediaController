@@ -9,6 +9,7 @@
 #include <pthread.h>
 #include <signal.h>
 #include <semaphore.h>
+#include <unistd.h>
 
 #include "types.h"
 #include "mediaPlayManager.h"
@@ -17,6 +18,7 @@
 
 int createServer( void );
 int closeServer( void );
-void receivingThread( void *socket );
+void *receivingThread( void *socket );
+void setMediaPlayer( int mp );
 
 #endif // SERVER_H

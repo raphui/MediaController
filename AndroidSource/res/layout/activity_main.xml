@@ -76,4 +76,28 @@
         android:layout_alignParentLeft="true"
         android:text="Navigation" />
 
+    <EditText
+        android:id="@+id/te_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:ems="10"
+        android:inputType="textPostalAddress" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/b_ip"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/te_ip"
+        android:layout_toRightOf="@+id/te_ip"
+        android:clickable="true"
+        android:onClick="onClickIp"
+        android:text="Add" />
+
 </RelativeLayout>
