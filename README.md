@@ -1,4 +1,4 @@
 MediaController
 ===============
 
-Android app and server side to remote control the VLC Player
+Android app and server side to remote control the VLC Player / Omxplayer
