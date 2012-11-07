@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
+#include <sys/syscall.h>
 #include <arpa/inet.h>
 #include <pthread.h>
 #include <signal.h>
@@ -15,6 +16,8 @@
 #include "mediaPlayManager.h"
 
 #define BUFF_SIZE   1024
+#define MAX_CLIENTS 3
+#define MAX_THREAD  3
 
 int createServer( void );
 int closeServer( void );

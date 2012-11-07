@@ -3,11 +3,14 @@
 int createServer( void )
 {
     int s_server = socket( AF_INET , SOCK_STREAM , 0 );
-    int s_client;
+    int s_client[MAX_CLIENTS];
+    int nbClient = 0;
+    int i;
 
     struct sockaddr_in serv_addr;
 
-    pthread_t thread;
+    //Max 3 clients so 3 differents threads
+    pthread_t thread[MAX_THREAD];
 
     if( s_server < 0 )
     {
@@ -27,7 +30,7 @@ int createServer( void )
         return PC_ERROR;
     }
 
-    if( listen( s_server , 10 ) < 0 )
+    if( listen( s_server , MAX_CLIENTS ) < 0 )
     {
         printf("[-]Error to listen to 10 connection.\n");
 
@@ -37,10 +40,19 @@ int createServer( void )
     while( 1 )
     {
 
-        s_client = accept( s_server , NULL , NULL );
+        if( nbClient == 0 )
+        {
+            s_client[0] = accept( s_server , NULL , NULL );
+        }
+        else
+        {
+            s_client[ nbClient ] = accept( s_server , NULL , NULL );
+        }
 
-        printf("[!]New client connected.\n");
-        pthread_create( &thread , NULL , receivingThread , &s_client );
+        printf("[!]New client connected , id: %d.\n" , nbClient++ );
+
+        pthread_create( &thread[ nbClient - 1 ] , NULL , receivingThread , &s_client[ nbClient - 1 ] );
+
 
     }
 
@@ -60,7 +72,7 @@ void *receivingThread( void *socket )
     char buff[BUFF_SIZE];
     int ret;
 
-    printf("[!]Receiving thread create with pid : %d !\n" , getpid() );
+    printf("[!]Receiving thread create with pid : %d !\n" , ( long int ) syscall( 224 ) );
 
     while( 1 )
     {
@@ -90,7 +102,7 @@ void *receivingThread( void *socket )
 
     }
 
-    printf("[!]Quitting receiving thread with pid: %d !\n" , getpid() );
+    printf("[!]Quitting receiving thread with pid: %d !\n" , ( long int ) syscall( 224 ) );
 
     pthread_exit( NULL );
 }
